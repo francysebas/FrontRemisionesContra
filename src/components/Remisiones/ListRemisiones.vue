@@ -10,7 +10,7 @@
 
                     <!--<template v-slot="action" v-slot-scope="data"> -->
                     <template v-slot:cell(action)="data">
-                        <b-button size="sm"  variant="success">
+                        <b-button size="sm"  variant="primary" :to="{name:'EditRemisiones', params:{afiliadoId: data.item.id}}">
                             Editar
                         </b-button>
 
@@ -40,12 +40,13 @@ export default {
                 {key: 'nombreS', label: 'Segundo nombre'},
                 {key: 'apellidoP', label: 'Primer apellido'},
                 {key: 'apellidoS', label: 'Segundo apellido'},
-                {key: 'action', label: ''}
+                {key: 'action', label: 'action'}
             ],
             remisiones:[]
         }
     },
     methods: {
+       
         getRemisiones(){
             const path = 'http://localhost:8000/api/v1.0/remisiones/'
             axios.get(path).then((response)=>{
