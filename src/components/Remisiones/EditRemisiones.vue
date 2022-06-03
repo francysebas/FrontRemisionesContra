@@ -114,7 +114,7 @@
 
 <script>
 import axios from 'axios'
-//import swal from 'sweetalert' 
+import swal from 'sweetalert' 
 export default {
     data() {
             return {
@@ -148,8 +148,8 @@ export default {
                 this.form.apellidoS = response.data.apellidoS
                 
               
-                alert("Libro actualizado exitosamente!") 
-                //swal("Actualizado exitosamente...","","success")
+                //alert("Libro actualizado exitosamente!") 
+                swal("Actualizado exitosamente...","","success")
             })
             .catch((error)=>{
                 console.log(error)

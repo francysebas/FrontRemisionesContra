@@ -14,7 +14,7 @@
                             Editar
                         </b-button>
 
-                        <b-button size="sm"  variant="danger">
+                        <b-button size="sm"  variant="danger" :to="{name:'DeleteRemision', params:{afiliadoId: data.item.id}}">
                             Eliminar
                         </b-button>
                     </template>
