@@ -45,6 +45,52 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="numCarnet" class="col-sm-2 col-form-label">
+                                    Numero de carnet
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" placeholder="Número de carnet" name="numCarnet" class="form-control" v-model.trim="form.numCarnet">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nombreP" class="col-sm-2 col-form-label">
+                                    primer nombre
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text"  name="nombreP" class="form-control" v-model.trim="form.nombreP">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="nombreS" class="col-sm-2 col-form-label">
+                                    segundo nombre
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text"  name="nombreS" class="form-control" v-model.trim="form.nombreS">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="apellidoP" class="col-sm-2 col-form-label">
+                                    1 apellido
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text"  name="apellidoP" class="form-control" v-model.trim="form.apellidoP">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="apellidoS" class="col-sm-2 col-form-label">
+                                   2 apellido
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text"  name="apellidoS" class="form-control" v-model.trim="form.apellidoS">
+                                </div>
+                            </div>
+
+                            
 
                             <div class="rows">
                                 <div class="col text-left">
@@ -75,18 +121,32 @@ export default {
                 afiliadoId: this.$route.params.afiliadoId,
                 form:{
                 tipoIdentificacion:'',
-                numIdentificacion:''
+                numIdentificacion:'',
+                numCarnet: "",
+                nombreP: "",
+                nombreS: "",
+                apellidoP: "",
+                apellidoS: "",
+                
             }
         }   
     },
     methods:{
         onSubmit(event){
             event.preventDefault()
-            const path = `http://localhost:8000/api/v1.0/remisiones/${this.afiliadoId}`
+            const path = `http://localhost:8000/api/v1.0/remisiones/${this.afiliadoId}/`
+            console.log("path",path)
+            console.log("id afiliado",this.afiliadoId)
             axios.put(path, this.form).then((response)=> {
-                
+               
                 this.form.tipoIdentificacion = response.data.tipoIdentificacion
                 this.form.numIdentificacion = response.data.numIdentificacion
+                this.form.numCarnet = response.data.numCarnet
+                this.form.nombreP = response.data.nombreP
+                this.form.nombreS = response.data.nombreS
+                this.form.apellidoP = response.data.apellidoP
+                this.form.apellidoS = response.data.apellidoS
+                
               
                 alert("Libro actualizado exitosamente!") 
                 //swal("Actualizado exitosamente...","","success")
@@ -103,7 +163,11 @@ export default {
             axios.get(path).then((response)=> {
                 this.form.tipoIdentificacion = response.data.tipoIdentificacion
                 this.form.numIdentificacion = response.data.numIdentificacion
-              
+                this.form.numCarnet = response.data.numCarnet
+                this.form.nombreP = response.data.nombreP
+                this.form.nombreS = response.data.nombreS
+                this.form.apellidoP = response.data.apellidoP
+                this.form.apellidoS = response.data.apellidoS
                
             })
             .catch((error)=>{
