@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3>¿Esta seguro que deseas eliminar este afiliado?</h3>
+                <h3>¿Esta seguro que deseas eliminar este afiliado...?</h3>
                 <p>Numero de numIdentificacion : {{this.element.numIdentificacion}}</p>
                 <p>Nombre: {{this.element.nombreP}}</p>
             </div>
