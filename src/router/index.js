@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import ListRemisiones from '@/components/Remisiones/ListRemisiones'
 import EditRemisiones from '@/components/Remisiones/EditRemisiones'
 import DeleteRemision from '@/components/Remisiones/DeleteRemision'
+import NuevaRemision from '@/components/Remisiones/NuevaRemision'
 
 Vue.use(Router)
 
@@ -19,11 +20,11 @@ export default new Router({
       name: 'ListRemisiones',
       component: ListRemisiones
     },
-   /* {
-      path: '/remisiones/editar',
-      name: 'EditRemisiones',
-      component: EditRemisiones
-    }*/
+    {
+      path: '/remisiones/nuevaremision',
+      name: 'NuevaRemision',
+      component: NuevaRemision
+    },
     {
       path: '/remisiones/:afiliadoId/editar',
       name: 'EditRemisiones',

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col text-left">
                 <h2>
-                    Editar Remision...
+                    Nueva remisión...
                 </h2>
             </div>
         </div>
@@ -95,7 +95,7 @@
                             <div class="rows">
                                 <div class="col text-left">
                                     <b-button type="submit" variant="primary">
-                                        Editar
+                                        Nuevo
                                     </b-button>
                                     <b-button type="submit" class="btn-large-space" :to="{name: 'ListRemisiones'}">
                                         Cancelar
@@ -118,7 +118,7 @@ import swal from 'sweetalert'
 export default {
     data() {
             return {
-                afiliadoId: this.$route.params.afiliadoId,
+                
                 form:{
                 tipoIdentificacion:'',
                 numIdentificacion:'',
@@ -134,10 +134,10 @@ export default {
     methods:{
         onSubmit(event){
             event.preventDefault()
-            const path = `http://localhost:8000/api/v1.0/remisiones/${this.afiliadoId}/`
+            const path = 'http://localhost:8000/api/v1.0/remisiones/'
             console.log("path",path)
             console.log("id afiliado",this.afiliadoId)
-            axios.put(path, this.form).then((response)=> {
+            axios.post(path, this.form).then((response)=> {
                
                 this.form.tipoIdentificacion = response.data.tipoIdentificacion
                 this.form.numIdentificacion = response.data.numIdentificacion
@@ -149,35 +149,18 @@ export default {
                 
               
                 //alert("Libro actualizado exitosamente!") 
-                swal("Actualizado exitosamente...","","success")
+                swal("Creado exitosamente...","","success")
             })
             .catch((error)=>{
-                console.log(error)
+                swal("No se ha creado la remisión","","error")
             })
              
         },
 
-        getAfiliado(){
-            
-            const path = `http://localhost:8000/api/v1.0/remisiones/${this.afiliadoId}/`
-            axios.get(path).then((response)=> {
-                this.form.tipoIdentificacion = response.data.tipoIdentificacion
-                this.form.numIdentificacion = response.data.numIdentificacion
-                this.form.numCarnet = response.data.numCarnet
-                this.form.nombreP = response.data.nombreP
-                this.form.nombreS = response.data.nombreS
-                this.form.apellidoP = response.data.apellidoP
-                this.form.apellidoS = response.data.apellidoS
-               
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
-        }
-        
+           
     },
     created(){
-            this.getAfiliado()
+            
             
         }
     

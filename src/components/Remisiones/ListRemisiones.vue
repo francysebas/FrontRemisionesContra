@@ -2,9 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col text-left">
+                <div class="">
                     <h2 text-align="center" >listado de remisiones ...</h2>
-                   
-                
+                    <b-button size = "sm" :to="{name: 'NuevaRemision'}" variant="primary">nueva remision</b-button>   
+                </div>
+                <br>
                 <div class="col-md-12">
                     <b-table stripe hover :items="remisiones" :fields="fields">
 
